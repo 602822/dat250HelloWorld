@@ -3,7 +3,7 @@ package com.example.dat250HelloWorld;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
-import java.util.List;
+
 
 @Component
 public class PollManager {

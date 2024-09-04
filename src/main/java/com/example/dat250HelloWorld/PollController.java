@@ -23,7 +23,7 @@ public class PollController {
     @PostMapping("/users/{username}/pools")
     public ResponseEntity<Poll> createPoll(@RequestBody Poll poll, @PathVariable String username) {
 
-        HashMap<String, User> users = pollManager.getUserPolls();
+        HashMap<String, User> users = pollManager.getUsers();
         User user = users.get(username);
 
       if (user != null) {
@@ -35,8 +35,6 @@ public class PollController {
       }
 
       return  new ResponseEntity<>(HttpStatusCode.valueOf(404));
-
-
 
     }
 

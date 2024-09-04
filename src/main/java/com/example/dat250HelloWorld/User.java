@@ -13,6 +13,11 @@ public class User {
         this.email = email;
         this.userPolls = userPolls;
     }
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+        this.userPolls = new ArrayList<>();
+    }
 
     public User() {
         userPolls = new ArrayList<Poll>();
