@@ -1,5 +1,7 @@
 package com.example.dat250HelloWorld;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +35,7 @@ public class UserController {
     @DeleteMapping("/users/{username}")
     public ResponseEntity<String> deleteUser(@PathVariable String username) {
         HashMap<String, User> users = pollManager.getUsers();
-        if(users.containsKey(username)) {
+        if (users.containsKey(username)) {
             users.remove(username);
             return ResponseEntity.status(200).body("user with username: " + username + " was deleted.");
         }
@@ -48,19 +50,17 @@ public class UserController {
 
     }
 
-    @PutMapping
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
+    @PutMapping("/users/{username}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable String username) {
+
         HashMap<String, User> users = pollManager.getUsers();
-        String username = user.getUsername();
-        if(users.containsKey(username)) {
+        if (user != null) {
             users.put(username, user);
             return ResponseEntity.status(200).body(user);
         }
-        return ResponseEntity.status(404).body(null);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 
     }
-
-
 
 
 }
