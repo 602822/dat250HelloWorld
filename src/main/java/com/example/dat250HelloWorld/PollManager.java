@@ -1,23 +1,28 @@
 package com.example.dat250HelloWorld;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.List;
 
+@Component
 public class PollManager {
-    HashMap<User, List<Poll>> userPolls;
+    HashMap<String, User> users;
 
-    public PollManager(HashMap<User, List<Poll>> userPolls) {
-        this.userPolls = userPolls;
+    public PollManager(HashMap<String, User> users) {
+        this.users= users;
     }
 
     public PollManager() {
+        users = new HashMap<>();
     }
 
-    public HashMap<User, List<Poll>> getUserPolls() {
-        return userPolls;
+
+    public HashMap<String,User> getUsers() {
+        return users;
     }
 
-    public void setUserPolls(HashMap<User, List<Poll>> userPolls) {
-        this.userPolls = userPolls;
+    public void setUsers(HashMap<String, User> users) {
+        this.users = users;
     }
 }
