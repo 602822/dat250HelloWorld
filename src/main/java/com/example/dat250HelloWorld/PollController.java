@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
+
 
 @RestController
 public class PollController {
@@ -19,7 +19,7 @@ public class PollController {
     }
 
 
-    @PostMapping("/pools")
+    @PostMapping("/polls")
     public ResponseEntity<Poll> createPoll(@RequestBody Poll poll) {
 
         HashMap<Integer, Poll> polls = pollManager.getPolls();

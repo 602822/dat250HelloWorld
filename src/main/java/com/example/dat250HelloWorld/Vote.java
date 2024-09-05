@@ -1,14 +1,21 @@
 package com.example.dat250HelloWorld;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.Instant;
 
 public class Vote {
     Instant publishedAt;
+    VoteOption option;
 
-    public Vote(Instant publishedAt) {
-        this.publishedAt = publishedAt;
+    @JsonCreator
+    public Vote(@JsonProperty("option") VoteOption option) {
+        this.option = option;
+        this.publishedAt = Instant.now();
     }
 
     public Vote() {
+
     }
 
     public Instant getPublishedAt() {

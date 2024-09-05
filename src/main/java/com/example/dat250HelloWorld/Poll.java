@@ -1,19 +1,29 @@
 package com.example.dat250HelloWorld;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Poll {
     String question;
     Instant publishedAt;
     Instant validUntil;
+    List<VoteOption> options;
 
-    public Poll(String question, Instant publishedAt, Instant validUntil) {
+    @JsonCreator
+    public Poll(@JsonProperty("question") String question, @JsonProperty("hoursValid") long hoursValid, @JsonProperty("options") List<VoteOption> options) {
         this.question = question;
-        this.publishedAt = publishedAt;
-        this.validUntil = validUntil;
+        this.publishedAt = Instant.now();
+        this.validUntil = this.publishedAt.plus(hoursValid, ChronoUnit.HOURS);
+        this.options = options;
     }
 
     public Poll() {
+        this.options = new ArrayList<>();
     }
 
     public String getQuestion() {
@@ -38,6 +48,14 @@ public class Poll {
 
     public void setValidUntil(Instant validUntil) {
         this.validUntil = validUntil;
+    }
+
+    public List<VoteOption> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<VoteOption> options) {
+        this.options = options;
     }
 }
 

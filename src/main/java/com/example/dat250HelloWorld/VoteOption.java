@@ -1,12 +1,16 @@
 package com.example.dat250HelloWorld;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class VoteOption {
     String caption;
-    int presentationOrder;
+    int presentationOrder = 0;
 
-    public VoteOption(String caption, int presentationOrder) {
+    @JsonCreator
+    public VoteOption(@JsonProperty("caption") String caption) {
         this.caption = caption;
-        this.presentationOrder = presentationOrder;
+        this.presentationOrder++;
     }
 
     public VoteOption() {
