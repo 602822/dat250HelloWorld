@@ -34,11 +34,13 @@ public class PollController {
     }
 
     @DeleteMapping("/polls")
-    public ResponseEntity<Poll> deletePolls() {
+    public ResponseEntity<HashMap<Integer,Poll>> deletePolls() {
         HashMap<Integer, Poll> polls = pollManager.getPolls();
         polls.clear();
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(polls, HttpStatus.OK);
     }
+
+
 
 
     @GetMapping("/polls")

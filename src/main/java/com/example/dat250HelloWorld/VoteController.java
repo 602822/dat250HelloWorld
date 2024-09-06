@@ -52,6 +52,18 @@ public class VoteController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @DeleteMapping
+    public ResponseEntity<List<Vote>> deleteUserVotes(@PathVariable String username) {
+        HashMap<String, User> users = pollManager.users;
+        if (users.containsKey(username)) {
+            User user = users.get(username);
+            List<Vote> votes = user.getVotes();
+            votes.clear();
+            return new ResponseEntity<>(votes, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 
 
 
