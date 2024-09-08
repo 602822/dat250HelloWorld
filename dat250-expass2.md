@@ -5,5 +5,5 @@ Another issue was how to retrieve the user and Poll object. I used the username 
 It was difficult to decide how to connect all the different objects.
 It was also difficult to design the endpoints for the restapi
 
-##Pending Issues
+## Pending Issues
 There is no pending issues that i am aware off
