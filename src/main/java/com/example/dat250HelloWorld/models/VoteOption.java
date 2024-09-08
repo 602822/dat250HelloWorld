@@ -1,4 +1,4 @@
-package com.example.dat250HelloWorld;
+package com.example.dat250HelloWorld.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,8 +7,9 @@ public class VoteOption {
     String caption;
     int presentationOrder = 0;
 
+
     @JsonCreator
-    public VoteOption(@JsonProperty("caption") String caption) {
+    public VoteOption(@JsonProperty("caption") String caption ) {
         this.caption = caption;
         this.presentationOrder++;
     }

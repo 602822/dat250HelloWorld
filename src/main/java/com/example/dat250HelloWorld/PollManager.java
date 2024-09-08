@@ -1,5 +1,7 @@
 package com.example.dat250HelloWorld;
 
+import com.example.dat250HelloWorld.models.Poll;
+import com.example.dat250HelloWorld.models.User;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

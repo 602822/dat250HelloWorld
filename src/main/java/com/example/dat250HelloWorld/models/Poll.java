@@ -1,4 +1,4 @@
-package com.example.dat250HelloWorld;
+package com.example.dat250HelloWorld.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,6 +13,7 @@ public class Poll {
     Instant publishedAt;
     Instant validUntil;
     List<VoteOption> options;
+
 
     @JsonCreator
     public Poll(@JsonProperty("question") String question, @JsonProperty("hoursValid") long hoursValid, @JsonProperty("options") List<VoteOption> options) {
