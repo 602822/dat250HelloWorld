@@ -1,4 +1,5 @@
 package com.example.dat250HelloWorld.models;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,15 +9,14 @@ public class Vote {
     Instant publishedAt;
     VoteOption option;
     int pollId;
-    int voteId = -1;
 
 
     @JsonCreator
-    public Vote(@JsonProperty("option") VoteOption option , @JsonProperty("pollId") int pollId) {
+    public Vote(@JsonProperty("option") VoteOption option, @JsonProperty("pollId") int pollId) {
         this.option = option;
         this.publishedAt = Instant.now();
         this.pollId = pollId;
-        voteId++;
+
 
     }
 
@@ -47,12 +47,7 @@ public class Vote {
     public void setPollId(int pollId) {
         this.pollId = pollId;
     }
-
-    public int getVoteId() {
-        return voteId;
-    }
-
-    public void setVoteId(int voteId) {
-        this.voteId = voteId;
-    }
 }
+
+
+
