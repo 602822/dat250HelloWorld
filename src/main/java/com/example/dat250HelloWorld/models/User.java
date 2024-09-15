@@ -1,21 +1,22 @@
 package com.example.dat250HelloWorld.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class User {
     String username;
     String email;
-    List<Vote> votes;
+    HashMap<String, Vote> votes;
 
-    public User(String username, String email, List<Vote> votes) {
+    public User(String username, String email, HashMap<String,Vote> votes) {
         this.username = username;
         this.email = email;
         this.votes = votes;
     }
 
     public User() {
-    votes = new ArrayList<>();
+    votes = new HashMap<>();
     }
 
     public String getEmail() {
@@ -34,11 +35,11 @@ public class User {
         this.username = username;
     }
 
-    public List<Vote> getVotes() {
+    public HashMap<String, Vote> getVotes() {
         return votes;
     }
 
-    public void setVotes(List<Vote> votes) {
+    public void setVotes(HashMap<String, Vote> votes) {
         this.votes = votes;
     }
 

@@ -21,6 +21,7 @@ public class Poll {
         this.publishedAt = Instant.now();
         this.validUntil = this.publishedAt.plus(hoursValid, ChronoUnit.HOURS);
         this.options = options;
+
     }
 
     public Poll() {
@@ -58,6 +59,7 @@ public class Poll {
     public void setOptions(List<VoteOption> options) {
         this.options = options;
     }
+
 }
 
 

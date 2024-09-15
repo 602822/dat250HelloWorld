@@ -8,15 +8,17 @@ import java.time.Instant;
 public class Vote {
     Instant publishedAt;
     VoteOption option;
-    int pollId;
+   int pollId;
+   int voteOptionId;
+
 
 
     @JsonCreator
-    public Vote(@JsonProperty("option") VoteOption option, @JsonProperty("pollId") int pollId) {
+    public Vote(@JsonProperty("option") VoteOption option, @JsonProperty("pollId") int pollId, @JsonProperty("voteOptionId") int voteOptionId) {
         this.option = option;
         this.publishedAt = Instant.now();
         this.pollId = pollId;
-
+        this.voteOptionId = voteOptionId;
 
     }
 
@@ -46,6 +48,14 @@ public class Vote {
 
     public void setPollId(int pollId) {
         this.pollId = pollId;
+    }
+
+    public int getVoteOptionId() {
+        return voteOptionId;
+    }
+
+    public void setVoteOptionId(int voteOptionId) {
+        this.voteOptionId = voteOptionId;
     }
 }
 

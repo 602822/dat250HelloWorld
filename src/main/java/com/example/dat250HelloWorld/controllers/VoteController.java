@@ -6,11 +6,11 @@ import com.example.dat250HelloWorld.models.Vote;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
-import java.util.List;
+
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class VoteController {
 
     private final PollManager pollManager;
@@ -20,11 +20,11 @@ public class VoteController {
     }
 
     @GetMapping("/users/{username}/votes")
-    public ResponseEntity<List<Vote>> getUserVotes(@PathVariable String username) {
+    public ResponseEntity<HashMap<String, Vote>> getUserVotes(@PathVariable String username) {
         HashMap<String, User> users = pollManager.getUsers();
         if (users.containsKey(username)) {
             User user = users.get(username);
-            List<Vote> votes = user.getVotes();
+            HashMap<String, Vote> votes = user.getVotes();
             return new ResponseEntity<>(votes, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,45 +36,52 @@ public class VoteController {
         HashMap<String, User> users = pollManager.getUsers();
         if (users.containsKey(username)) {
             User user = users.get(username);
-            List<Vote> votes = user.getVotes();
-            votes.add(vote);
+            HashMap<String, Vote> votes = user.getVotes();
+            int pollId = vote.getPollId();
+            int voteOptionId = vote.getVoteOptionId();
+            votes.put(pollId + String.valueOf(voteOptionId), vote);
             return new ResponseEntity<>(vote, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/users/{username}/votes/{voteId}")
-    public ResponseEntity<Vote> updateUserVote(@PathVariable String username, @RequestBody Vote vote, @PathVariable int voteId) {
+    @PutMapping("/users/{username}/votes/")
+    public ResponseEntity<Vote> updateUserVote(@PathVariable String username, @RequestBody Vote vote) {
         HashMap<String, User> users = pollManager.getUsers();
         if (users.containsKey(username)) {
             User user = users.get(username);
-            List<Vote> votes = user.getVotes();
-            votes.set(voteId, vote);
+            HashMap<String, Vote> votes = user.getVotes();
+            int voteOptionId = vote.getVoteOptionId();
+            int pollId = vote.getPollId();
+            votes.put(pollId + String.valueOf(voteOptionId), vote);
             return new ResponseEntity<>(vote, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/users/{username}/votes")
-    public ResponseEntity<List<Vote>> deleteUserVotes(@PathVariable String username) {
+    public ResponseEntity<HashMap<String, Vote>> deleteUserVotes(@PathVariable String username) {
         HashMap<String, User> users = pollManager.getUsers();
         if (users.containsKey(username)) {
             User user = users.get(username);
-            List<Vote> votes = user.getVotes();
+            HashMap<String, Vote> votes = user.getVotes();
             votes.clear();
             return new ResponseEntity<>(votes, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/users/{username}/votes/{voteId}")
-    public ResponseEntity<List<Vote>> deleteUserVoteById(@PathVariable String username, @PathVariable int voteId) {
+    @DeleteMapping("/users/{username}/votes/{pollId}/{voteOptionId}")
+    public ResponseEntity<HashMap<String, Vote>> deleteUserVoteById(@PathVariable String username, @PathVariable int pollId, @PathVariable int voteOptionId) {
         HashMap<String, User> users = pollManager.getUsers();
         if (users.containsKey(username)) {
             User user = users.get(username);
-            List<Vote> votes = user.getVotes();
-            if(votes.get(voteId) != null) {
-                votes.remove(voteId);
+            HashMap<String, Vote> votes = user.getVotes();
+
+            String id = pollId + String.valueOf(voteOptionId);
+
+            if (votes.get(id) != null) {
+                votes.remove(id);
                 return new ResponseEntity<>(votes, HttpStatus.OK);
             }
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -82,22 +89,20 @@ public class VoteController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/users/{username}/votes/{voteId}")
-    public ResponseEntity<Vote> getUserVoteById(@PathVariable String username, @PathVariable int voteId) {
+    @GetMapping("/users/{username}/votes/")
+    public ResponseEntity<Vote> getUserVoteById(@PathVariable String username, int pollId, int voteOptionId) {
         HashMap<String, User> users = pollManager.getUsers();
         if (users.containsKey(username)) {
             User user = users.get(username);
-            List<Vote> votes = user.getVotes();
-            if(votes.get(voteId) != null) {
-                Vote vote = votes.get(voteId);
+            HashMap<String, Vote> votes = user.getVotes();
+            String id = pollId + String.valueOf(voteOptionId);
+            if (votes.get(id) != null) {
+                Vote vote = votes.get(id);
                 return new ResponseEntity<>(vote, HttpStatus.OK);
             }
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
-
-
 
 
 }

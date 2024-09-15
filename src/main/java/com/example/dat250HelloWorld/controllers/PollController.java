@@ -2,12 +2,14 @@ package com.example.dat250HelloWorld.controllers;
 
 import com.example.dat250HelloWorld.PollManager;
 import com.example.dat250HelloWorld.models.Poll;
+import com.example.dat250HelloWorld.models.VoteOption;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 @RestController
@@ -75,10 +77,53 @@ public class PollController {
     @GetMapping("/polls/{pollId}")
     public ResponseEntity<Poll> getPollById(@PathVariable int pollId) {
         HashMap<Integer, Poll> polls = pollManager.getPolls();
-        if(polls.containsKey(pollId)) {
+        if (polls.containsKey(pollId)) {
             return new ResponseEntity<>(polls.get(pollId), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping("/polls/{pollId}/{voteOptionId}/increase")
+    public ResponseEntity<HashMap<Integer, Poll>> increaseVotesPoll(@RequestBody Poll poll, @PathVariable int pollId, @PathVariable int voteOptionId) {
+        if (poll != null) {
+            List<VoteOption> options = poll.getOptions();
+
+            for (VoteOption option : options) {
+                if (option.getPresentationOrder() == voteOptionId) {
+                    option.setNumberOfVotes(option.getNumberOfVotes() + 1);
+                    break;
+                }
+            }
+
+
+            HashMap<Integer, Poll> polls = pollManager.getPolls();
+            polls.put(pollId, poll);
+            return new ResponseEntity<>(polls, HttpStatusCode.valueOf(200));
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+    }
+
+    @PutMapping("/polls/{pollId}/{voteOptionId}/decrease")
+    public ResponseEntity<HashMap<Integer, Poll>> decreaseVotesPoll(@RequestBody Poll poll, @PathVariable int pollId, @PathVariable int voteOptionId) {
+        if (poll != null) {
+            List<VoteOption> options = poll.getOptions();
+
+            for (VoteOption option : options) {
+                if (option.getPresentationOrder() == voteOptionId) {
+                    int currentNumberOfVotes = option.getNumberOfVotes();
+                    if (currentNumberOfVotes > 0) {
+                        option.setNumberOfVotes(option.getNumberOfVotes() - 1);
+                    }
+                    break;
+                }
+            }
+            HashMap<Integer, Poll> polls = pollManager.getPolls();
+            polls.put(pollId, poll);
+            return new ResponseEntity<>(polls, HttpStatusCode.valueOf(200));
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
     }
 
 }
