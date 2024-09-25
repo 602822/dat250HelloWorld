@@ -22,6 +22,7 @@ Deleted all 10 documents using the gui
 
 ### Bulk Write
 I created a db with three documents called pizza. 
+
 <img width="936" alt="image" src="https://github.com/user-attachments/assets/ebab2443-204f-4d55-9971-8848aa2f99b9">
 
 And i did the following bulk write:
@@ -36,9 +37,11 @@ I then defined the map and reduce function:
 <img width="452" alt="image" src="https://github.com/user-attachments/assets/3ce3eb32-df42-417f-8833-27003337111f">
 
 Performed the MapReduce:
+
 <img width="264" alt="image" src="https://github.com/user-attachments/assets/d8906971-6e5a-4394-ab3d-34a74c72fb4f">
 
 i got the following result: 
+
 <img width="384" alt="image" src="https://github.com/user-attachments/assets/3c6dae57-2157-4898-a0a8-2a3495f4ddd9">
 
 ## Aggregate
