@@ -12,6 +12,7 @@
 
 ### Update Operation
 <img width="314" alt="image" src="https://github.com/user-attachments/assets/f67eea18-ab47-4309-aa07-71d0ecd07801">
+
 I changed the status from "D" to "P", I changed the size.uom from "in" to "cm". I also added the lastModified field.
 
 ### Delete Operation
