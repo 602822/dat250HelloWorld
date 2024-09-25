@@ -43,7 +43,7 @@ Performed the MapReduce:
 i got the following result: 
 
 <img width="384" alt="image" src="https://github.com/user-attachments/assets/3c6dae57-2157-4898-a0a8-2a3495f4ddd9">
-Map reduce is useful for aggregating documents and query information om the combined document like the sum, min, max or average
+Map reduce is useful for grouping information from several documents. And perform operations on the grouped data. For example finding the sum, min, max or average
 
 ## Aggregate
 <img width="471" alt="image" src="https://github.com/user-attachments/assets/e15c191d-ec12-4d77-87cd-2da8a273e140">
