@@ -17,6 +17,7 @@ I changed the status from "D" to "P", I changed the size.uom from "in" to "cm". 
 
 ### Delete Operation
 <img width="431" alt="image" src="https://github.com/user-attachments/assets/7b336c74-fdd7-4367-bf77-1ca4cd27c768">
+
 Deleted all 10 documents using the gui
 
 ### Bulk Write
