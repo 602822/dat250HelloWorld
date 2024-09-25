@@ -48,6 +48,15 @@ i got the following result:
 <img width="471" alt="image" src="https://github.com/user-attachments/assets/e15c191d-ec12-4d77-87cd-2da8a273e140">
 
 
+## Verified the Sha256 signature
+I first created the file: 
+<img width="845" alt="image" src="https://github.com/user-attachments/assets/144e2794-b70f-49c6-9454-f1cc5cdf1fe5">
+Then i compared the signatures:
+<img width="861" alt="image" src="https://github.com/user-attachments/assets/29574b9f-2888-41a9-befc-1fb0668febec">
+
+
+
+
 
 
 
