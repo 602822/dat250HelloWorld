@@ -44,6 +44,7 @@ i got the following result:
 
 <img width="384" alt="image" src="https://github.com/user-attachments/assets/3c6dae57-2157-4898-a0a8-2a3495f4ddd9">
 Map reduce is useful for grouping information from several documents. And perform operations on the grouped data. For example finding the sum, min, max or average
+In this example i used max reduce to sum the price for each of the customers with _id
 
 ## Aggregate
 <img width="471" alt="image" src="https://github.com/user-attachments/assets/e15c191d-ec12-4d77-87cd-2da8a273e140">
