@@ -23,6 +23,7 @@ Deleted all 10 documents using the gui
 ### Bulk Write
 I created a db with three documents called pizza. 
 <img width="936" alt="image" src="https://github.com/user-attachments/assets/ebab2443-204f-4d55-9971-8848aa2f99b9">
+
 And i did the following bulk write:
 <img width="658" alt="image" src="https://github.com/user-attachments/assets/be8d88de-f2b1-473a-b645-75835b79a0f2">
 
