@@ -31,10 +31,13 @@ And i did the following bulk write:
 ## Map Reduce
 I created a collection called orders. 
 <img width="946" alt="image" src="https://github.com/user-attachments/assets/7bb59aa2-b21a-446e-a20f-3086f1587635">
+
 I then defined the map and reduce function:
 <img width="452" alt="image" src="https://github.com/user-attachments/assets/3ce3eb32-df42-417f-8833-27003337111f">
+
 Performed the MapReduce:
 <img width="264" alt="image" src="https://github.com/user-attachments/assets/d8906971-6e5a-4394-ab3d-34a74c72fb4f">
+
 i got the following result: 
 <img width="384" alt="image" src="https://github.com/user-attachments/assets/3c6dae57-2157-4898-a0a8-2a3495f4ddd9">
 
